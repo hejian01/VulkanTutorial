@@ -268,10 +268,17 @@ void HelloTriangleApplication::createLogicalDevice() {
         
     }
 
+#ifdef _WIN32
+    std::cout << "This is Windows." << std::endl;
+#elif __APPLE__
+    std::cout << "This is macOS." << std::endl;
     /*! 此处需要开启 */
     createInfo.enabledExtensionCount = static_cast<uint32_t>(deviceExtensions.size());
     createInfo.ppEnabledExtensionNames = deviceExtensions.data();
-    
+#else
+    std::cout << "This is some other platform." << std::endl;
+#endif
+
     if (vkCreateDevice(physicalDevice, &createInfo, nullptr, &device) != VK_SUCCESS) {
         throw std::runtime_error("failed to create logical device!");
     }
