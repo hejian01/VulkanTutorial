@@ -22,7 +22,7 @@ if (UNIX)
     link_directories(/opt/homebrew/Cellar/glfw/3.3.8/lib)
 
     include_directories(/Users/hejian/VulkanSDK/1.3.239.0/macOS/include/)
-    link_directories(/Users/hejian/VulkanSDK/1.3.239.0/macOS/lib)
+    link_directories(/Users/hejian/VulkanSDK/1.3.243.0/macOS/lib)
 
     # Libraries to link against
     set(librariesList
