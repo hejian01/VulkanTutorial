@@ -66,6 +66,8 @@ private:
     VkSurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& availableFormats);
     VkPresentModeKHR chooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes);
     VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities);
+    void recreateSwapChain();
+    void cleanupSwapChain();
     
     void createImageViews();
     
@@ -107,13 +109,18 @@ private:
     VkPipeline                              graphicsPipeline;
     
     VkCommandPool                           commandPool;
-    VkCommandBuffer                         commandBuffer;
-    VkSemaphore                             imageAvailableSemaphore;
-    VkSemaphore                             renderFinishedSemaphore;
-    VkFence                                 inFlightFence;
+    std::vector<VkCommandBuffer>            commandBuffers;
+    std::vector<VkSemaphore>                imageAvailableSemaphores;
+    std::vector<VkSemaphore>                renderFinishedSemaphores;
+    std::vector<VkFence>                    inFlightFences;
+    
+    const int                               MAX_FRAMES_IN_FLIGHT = 2;
+    uint32_t                                currentFrame = 0;
     
     uint32_t                                m_width;
     uint32_t                                m_height;
+    
+    bool                                    framebufferResized = false;
 };
 
 #endif
