@@ -4,8 +4,9 @@ project(vulkan_vs)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-autolink")
-set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/install")
-message("CMAKE_INSTALL_PREFIX：" ${CMAKE_CURRENT_BINARY_DIR})
+#set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/install")
+#message("CMAKE_INSTALL_PREFIX：" ${CMAKE_CURRENT_BINARY_DIR})
+set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/install" CACHE PATH "" FORCE)
 
 # Set compiler and linker flags based on platform
 if (UNIX)
@@ -23,6 +24,8 @@ if (UNIX)
 
     include_directories(/Users/hejian/VulkanSDK/1.3.239.0/macOS/include/)
     link_directories(/Users/hejian/VulkanSDK/1.3.243.0/macOS/lib)
+
+    include_directories(/Users/hejian/10_OpenLib/stb)
 
     # Libraries to link against
     set(librariesList
