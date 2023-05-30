@@ -26,6 +26,8 @@ if (UNIX)
     link_directories(/Users/hejian/VulkanSDK/1.3.243.0/macOS/lib)
 
     include_directories(/Users/hejian/10_OpenLib/stb)
+    include_directories(/Users/hejian/10_OpenLib/tinyobjloader)
+
 
     # Libraries to link against
     set(librariesList
@@ -53,3 +55,6 @@ add_executable(vulkan_vs
 )
 
 target_link_libraries(vulkan_vs ${librariesList})
+
+set(CMAKE_CURRENT_LIST_DIR "${CMAKE_CURRENT_LIST_DIR}" CACHE INTERNAL "")
+add_compile_definitions(CMAKE_CURRENT_LIST_DIR="${CMAKE_CURRENT_LIST_DIR}")
